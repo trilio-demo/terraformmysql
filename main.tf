@@ -1,7 +1,7 @@
 provider "kubernetes" {
-  config_path    = "~/Downloads/staging_new.yaml"
+  config_path    = "~/stuff/KUBECONFIGs/mke-staging.yaml"
 }
 
 provider "kubectl" {
-  config_path = "~/Downloads/staging_new.yaml"
+  config_path = "~/stuff/KUBECONFIGs/mke-staging.yaml"
 }

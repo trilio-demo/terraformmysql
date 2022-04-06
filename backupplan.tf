@@ -1,4 +1,19 @@
-resource "kubectl_manifest" "create_backupplan" {
-  yaml_body = file("/Users/stefankroll/stuff/k8s-yaml/Demo_mysql/4_backupplan/backupplan-mysql.yaml")
-  override_namespace = var.namespace_name
+resource "kubectl_manifest" "createbackupplan" {
+    yaml_body = <<YAML
+apiVersion: triliovault.trilio.io/v1
+kind: BackupPlan
+metadata:
+  name: backupplan-tf-test-stefan
+  namespace: tf-test-stefan
+spec:
+  backupNamespace: tf-test-stefan
+  backupConfig:
+    target:
+      name: stefan-trilio-s3-bucket
+      namespace: tf-test-stefan
+  backupPlanComponents:
+    custom:
+      - matchLabels:
+          app: k8s-demo-app
+YAML
 }
